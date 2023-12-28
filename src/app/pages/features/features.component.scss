@@ -1,0 +1,78 @@
+.page-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 99;
+  
+    p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: capitalize;
+      padding: 12px 15px;
+      background-color: #fff;
+      box-shadow:
+        0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+      span {
+        &.enable-linkes {
+          color: rgb(254, 80, 0);
+          cursor: pointer;
+        }
+        color: inherit;
+        cursor: initial;
+      }
+    }
+    .filter_btn {
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        font-weight: 500;
+        color: #000;
+        border-radius: 4px;
+    }
+    
+  }
+
+  .mainFeatureClass{
+    border: 1px solid black;
+    height: 260px;  
+    margin-left: 1px;
+    overflow-x: hidden;
+}
+.company-class{
+    border: 1px solid black;
+    overflow-x: hidden;
+
+}
+.users-class{
+  border: 1px solid black;
+  height: 100px;
+}
+.orgs-class{
+    border: 1px solid black;
+}
+.mainContainer{
+    background-color: #E3E3E3;
+    
+}
+.customeRow{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+.customeRow .leftside{
+  display: flex;
+  gap:20px;
+}
+.companyHeading{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+.overalHeading{
+  display: flex;
+  gap:20px;
+}
