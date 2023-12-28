@@ -76,3 +76,20 @@
   display: flex;
   gap:20px;
 }
+.tabs {
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-top: 1em;
+}
+.active-link {
+    color: #F20B22;
+} 
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

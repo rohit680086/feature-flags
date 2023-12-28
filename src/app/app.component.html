@@ -1,3 +1,10 @@
-<div>
-<router-outlet></router-outlet>
-</div>
+
+<nav mat-tab-nav-bar ngClass = "tabs" [tabPanel]="tabPanel">
+  <a mat-tab-link routerLink="/features" routerLinkActive="active-link">Features</a>
+  <a mat-tab-link routerLink="/companies" routerLinkActive="active-link">Companies</a>
+  <a mat-tab-link routerLink="/requests" routerLinkActive="active-link">Requests</a>
+  <a mat-tab-link routerLink="/audit" routerLinkActive="active-link">Audit</a>
+</nav>  
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>
