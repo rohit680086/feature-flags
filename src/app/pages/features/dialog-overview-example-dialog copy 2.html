@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Request a Change</h1>
+<div mat-dialog-content>
+  <p>Feature: </p>
+  <mat-form-field>
+    <mat-label>Feature</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+  <p>Companies: </p>
+  <mat-form-field>
+    <mat-label>Company</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+  <p>Orgs: </p>
+  <mat-form-field>
+    <mat-label>Org</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+  <p>Users: </p>
+  <mat-form-field>
+    <mat-label>User</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Check</button>
+</div>
