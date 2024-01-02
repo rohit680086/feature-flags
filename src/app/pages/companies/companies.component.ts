@@ -24,7 +24,8 @@ export class CompaniesComponent {
   constructor(public dialog: MatDialog) {}
   RequestChangeDialog(): void {
     const dialogRef = this.dialog.open(RequestChangeComponent, {
-      data: {name: this.name, animal: this.animal},
+      data: {name: this.name, animal: this.animal},height: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -34,7 +35,8 @@ export class CompaniesComponent {
   }
   StatusCheckDialog(): void {
     const dialogRef = this.dialog.open(StatusCheckerComponent, {
-      data: {name: this.name, animal: this.animal},
+      data: {name: this.name, animal: this.animal},height: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

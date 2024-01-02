@@ -26,7 +26,8 @@ export class FeaturesComponent {
   constructor(public dialog: MatDialog) {}
   newFeatureDialog(): void {
     const dialogRef = this.dialog.open(NewFeatureFlagComponent, {
-      data: {name: this.name, animal: this.animal},
+      data: {name: this.name, animal: this.animal},height: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -37,7 +38,8 @@ export class FeaturesComponent {
 
   statusCheckDialog(): void {
     const dialogRef = this.dialog.open(StatusCheckerComponent, {
-      data: {name: this.name, animal: this.animal},
+      data: {name: this.name, animal: this.animal},height: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -48,7 +50,8 @@ export class FeaturesComponent {
 
   requestChangeDialog(): void {
     const dialogRef = this.dialog.open(RequestChangeComponent, {
-      data: {name: this.name, animal: this.animal},
+      data: {name: this.name, animal: this.animal},height: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

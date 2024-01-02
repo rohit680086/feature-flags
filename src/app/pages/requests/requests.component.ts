@@ -21,7 +21,8 @@ export class RequestsComponent {
   animal: string= '';
   name: string='';
   dataSource = new MatTableDataSource(COLUMN_DATA);
-  displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status'];
+  columnSize= COLUMN_DATA.length;
+  displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status','RequestedBy','RequestedTime'];
   constructor(public dialog: MatDialog) {}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -29,7 +30,8 @@ export class RequestsComponent {
   }
   RequestChangeDialog(): void {
     const dialogRef = this.dialog.open(RequestChangeComponent, {
-      data: {name: this.name, animal: this.animal},
+      data: {name: this.name, animal: this.animal},height: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -40,9 +42,10 @@ export class RequestsComponent {
 }
 
 const COLUMN_DATA: ColumnData[] = [
-  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', Status: 'Pending'},
-  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', Status: 'Approved'},
-  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', Status: 'Declined'},
+  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', Status: 'Pending', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885'},
+  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', Status: 'Approved', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885'},
+  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', Status: 'Declined', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885'},
+  {position: 3, Name: 'Feature 4', Changes: 'User A -> 1', Status: 'Approved', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885'},
 ];
 
 export interface ColumnData {

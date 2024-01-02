@@ -1,4 +1,4 @@
-import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
@@ -17,8 +17,9 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './audit.component.scss'
 })
 export class AuditComponent {
-  displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status'];
+  displayedColumns: string[] = ['position', 'Name', 'Changes', 'RequestedBy','RequestedTime','LastUpdatedBy','LastUpdatedTime'];
   dataSource = new MatTableDataSource(COLUMN_DATA);
+  columnSize= COLUMN_DATA.length;
   constructor() {}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -27,9 +28,9 @@ export class AuditComponent {
 }
 
 const COLUMN_DATA: ColumnData[] = [
-  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', RequestedBy: 'Pending'},
-  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', RequestedBy: 'Approved'},
-  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', RequestedBy: 'Declined'},
+  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885', LastUpdatedBy: 'User1', LastUpdatedTime: '2018-09-06 12:42:53.885'},
+  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885', LastUpdatedBy: 'User2', LastUpdatedTime: '2018-09-06 12:42:53.885'},
+  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885', LastUpdatedBy: 'User3', LastUpdatedTime: '2018-09-06 12:42:53.885'},
 ];
 
 export interface ColumnData {
@@ -37,7 +38,7 @@ export interface ColumnData {
   position: number;
   Changes: string;
   RequestedBy: string;
-  RequestedTime?: string;
-  LastUpdatedBy?: string;
-  LastUpdatedTime?: string;
+  RequestedTime: string;
+  LastUpdatedBy: string;
+  LastUpdatedTime: string;
 }
