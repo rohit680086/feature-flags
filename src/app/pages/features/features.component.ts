@@ -11,10 +11,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { NewFeatureFlagComponent } from '../../component/new-feature-flag/new-feature-flag.component';
 import { RequestChangeComponent } from '../../component/request-change/request-change.component';
 import { StatusCheckerComponent } from '../../component/status-checker/status-checker.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './features.component.html',
   styleUrl: './features.component.scss'
 })

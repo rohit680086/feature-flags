@@ -10,10 +10,11 @@ import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { RequestChangeComponent } from '../../component/request-change/request-change.component';
 import { StatusCheckerComponent } from '../../component/status-checker/status-checker.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @Component({
   selector: 'app-companies',
   standalone: true,
-  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatFormFieldModule, MatPaginatorModule,MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './companies.component.html',
   styleUrl: './companies.component.scss'
 })

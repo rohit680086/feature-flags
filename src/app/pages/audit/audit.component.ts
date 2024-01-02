@@ -3,6 +3,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {
   MatDialog
 } from '@angular/material/dialog';
@@ -11,7 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-audit',
   standalone: true,
-  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './audit.component.html',
   styleUrl: './audit.component.scss'
 })

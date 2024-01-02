@@ -9,11 +9,11 @@ import {
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { RequestChangeComponent } from '../../component/request-change/request-change.component';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 @Component({
   selector: 'app-requests',
   standalone: true,
-  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './requests.component.html',
   styleUrl: './requests.component.scss'
 })
