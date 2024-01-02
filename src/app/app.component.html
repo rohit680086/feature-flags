@@ -1,10 +1,34 @@
-
-<!-- <nav mat-tab-nav-bar ngClass = "tabs" [tabPanel]="tabPanel">
-  <a mat-tab-link routerLink="/features" routerLinkActive="active-link">Features</a>
-  <a mat-tab-link routerLink="/companies" routerLinkActive="active-link">Companies</a>
-  <a mat-tab-link routerLink="/requests" routerLinkActive="active-link">Requests</a>
-  <a mat-tab-link routerLink="/audit" routerLinkActive="active-link">Audit</a>
-</nav>   -->
-<!-- <mat-tab-nav-panel #tabPanel> -->
+ <div class="m-3 mainContainer">
+<span><strong style="font-size: larger;">Feature Flags</strong></span>
+<!-- <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start"> -->
+<nav mat-tab-nav-bar mat-stretch-tabs="false" mat-align-tabs="start" [tabPanel]="tabPanel">
+  <a mat-tab-link
+  *ngFor="let link of navLinks"
+  [routerLink]="link.link"
+  routerLinkActive #rla="routerLinkActive"
+  [active]="rla.isActive">
+ {{link.label}}
+</a>
+</nav>
+<!-- </mat-tab-group> -->
+<mat-tab-nav-panel #tabPanel>
   <router-outlet></router-outlet>
-<!-- </mat-tab-nav-panel> -->
+</mat-tab-nav-panel>
+</div>
+<!-- <div class="m-3 mainContainer">
+<span><strong style="font-size: larger;">Feature Flags</strong></span>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Features">
+        <app-features></app-features>   
+      </mat-tab>
+<mat-tab label="Companies">
+  <app-companies></app-companies>   
+</mat-tab>
+<mat-tab label="Requests">
+ <app-requests></app-requests> 
+</mat-tab>
+<mat-tab label="Audit">
+  <app-audit></app-audit> 
+</mat-tab>
+</mat-tab-group>
+</div> -->

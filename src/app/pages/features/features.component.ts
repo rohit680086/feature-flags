@@ -1,22 +1,22 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {
-  MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialogTitle,
-  MatDialogContent,
-  MatDialogActions,
-  MatDialogClose,
+  MatDialog
 } from '@angular/material/dialog';
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import { NewFeatureFlagComponent } from '../../component/new-feature-flag/new-feature-flag.component';
+import { RequestChangeComponent } from '../../component/request-change/request-change.component';
+import { StatusCheckerComponent } from '../../component/status-checker/status-checker.component';
 @Component({
   selector: 'app-features',
   standalone: true,
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './features.component.html',
   styleUrl: './features.component.scss'
@@ -33,8 +33,8 @@ export class FeaturesComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+  newFeatureDialog(): void {
+    const dialogRef = this.dialog.open(NewFeatureFlagComponent, {
       data: {name: this.name, animal: this.animal},
     });
 
@@ -44,8 +44,8 @@ export class FeaturesComponent {
     });
   }
 
-  openDialog2(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog2, {
+  statusCheckDialog(): void {
+    const dialogRef = this.dialog.open(StatusCheckerComponent, {
       data: {name: this.name, animal: this.animal},
     });
 
@@ -55,8 +55,8 @@ export class FeaturesComponent {
     });
   }
 
-  openDialog3(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog3, {
+  requestChangeDialog(): void {
+    const dialogRef = this.dialog.open(RequestChangeComponent, {
       data: {name: this.name, animal: this.animal},
     });
 
@@ -95,91 +95,3 @@ const ELEMENT_DATA2: PeriodicElement2[] = [
   {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', RequestedBy: 'Approved'},
   {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', RequestedBy: 'Declined'},
 ];
-
-
-//input data
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
-
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: './dialog-overview-example-dialog.html',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-  ],
-})
-export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
-
-@Component({
-  selector: 'dialog-overview-example-dialog2',
-  templateUrl: './dialog-overview-example-dialog copy.html',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-  ],
-})
-export class DialogOverviewExampleDialog2 {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog2>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
-
-
-
-@Component({
-  selector: 'dialog-overview-example-dialog3',
-  templateUrl: './dialog-overview-example-dialog copy 2.html',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-  ],
-})
-export class DialogOverviewExampleDialog3 {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog3>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
