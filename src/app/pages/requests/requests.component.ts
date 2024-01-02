@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import {
-  MatDialog
-} from '@angular/material/dialog';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {
+  MatDialog
+} from '@angular/material/dialog';
+import {FormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
 import { RequestChangeComponent } from '../../component/request-change/request-change.component';
 
 @Component({
   selector: 'app-requests',
   standalone: true,
-  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule],
+  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './requests.component.html',
   styleUrl: './requests.component.scss'
 })

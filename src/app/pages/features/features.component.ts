@@ -14,9 +14,6 @@ import { StatusCheckerComponent } from '../../component/status-checker/status-ch
 @Component({
   selector: 'app-features',
   standalone: true,
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
   imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './features.component.html',
   styleUrl: './features.component.scss'
