@@ -20,7 +20,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 export class RequestsComponent {
   animal: string= '';
   name: string='';
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(COLUMN_DATA);
   displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status'];
   constructor(public dialog: MatDialog) {}
   applyFilter(event: Event) {
@@ -39,13 +39,13 @@ export class RequestsComponent {
   }
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const COLUMN_DATA: ColumnData[] = [
   {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', Status: 'Pending'},
   {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', Status: 'Approved'},
   {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', Status: 'Declined'},
 ];
 
-export interface PeriodicElement {
+export interface ColumnData {
   Name: string;
   position: number;
   Changes: string;

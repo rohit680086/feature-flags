@@ -18,7 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class AuditComponent {
   displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(COLUMN_DATA);
   constructor() {}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -26,17 +26,18 @@ export class AuditComponent {
   }
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', Status: 'Pending'},
-  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', Status: 'Approved'},
-  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', Status: 'Declined'},
+const COLUMN_DATA: ColumnData[] = [
+  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', RequestedBy: 'Pending'},
+  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', RequestedBy: 'Approved'},
+  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', RequestedBy: 'Declined'},
 ];
 
-export interface PeriodicElement {
+export interface ColumnData {
   Name: string;
   position: number;
   Changes: string;
-  Status: string;
-  RequestedBy?: string;
+  RequestedBy: string;
   RequestedTime?: string;
+  LastUpdatedBy?: string;
+  LastUpdatedTime?: string;
 }

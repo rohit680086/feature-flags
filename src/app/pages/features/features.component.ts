@@ -23,14 +23,7 @@ export class FeaturesComponent {
   animal: string= '';
   name: string='';
   title = 'pure_feature_flag';
-  displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
   constructor(public dialog: MatDialog) {}
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
   newFeatureDialog(): void {
     const dialogRef = this.dialog.open(NewFeatureFlagComponent, {
       data: {name: this.name, animal: this.animal},
@@ -64,32 +57,3 @@ export class FeaturesComponent {
     });
   }
 }
-
-export interface PeriodicElement {
-  Name: string;
-  position: number;
-  Changes: string;
-  Status: string;
-  RequestedBy?: string;
-  RequestedTime?: string;
-}
-export interface PeriodicElement2 {
-  Name: string;
-  position: number;
-  Changes: string;
-  RequestedBy: string;
-  RequestedTime?: string;
-  LastUpdatedBy?: string;
-  LastUpdatedTime?: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', Status: 'Pending'},
-  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', Status: 'Approved'},
-  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', Status: 'Declined'},
-];
-
-const ELEMENT_DATA2: PeriodicElement2[] = [
-  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', RequestedBy: 'Pending'},
-  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', RequestedBy: 'Approved'},
-  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', RequestedBy: 'Declined'},
-];
