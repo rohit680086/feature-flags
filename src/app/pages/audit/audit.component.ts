@@ -16,7 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './audit.component.scss'
 })
 export class AuditComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   constructor() {}
   applyFilter(event: Event) {

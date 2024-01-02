@@ -21,7 +21,7 @@ export class RequestsComponent {
   animal: string= '';
   name: string='';
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status'];
   constructor(public dialog: MatDialog) {}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
