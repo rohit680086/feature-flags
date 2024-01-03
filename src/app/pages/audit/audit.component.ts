@@ -1,8 +1,10 @@
-import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA, ViewChild  } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import {
   MatDialog
 } from '@angular/material/dialog';
@@ -11,7 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-audit',
   standalone: true,
-  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule , MatSortModule],
   templateUrl: './audit.component.html',
   styleUrl: './audit.component.scss'
 })
@@ -22,6 +24,12 @@ export class AuditComponent {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  @ViewChild(MatSort) sort!: MatSort;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 }
 
