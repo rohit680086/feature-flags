@@ -36,6 +36,9 @@ export class NewFeatureFlagComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  ngOnInit() {
+    this.dialogRef.updateSize('80%', '80%');
+}
 }
 
 export interface DialogData {
