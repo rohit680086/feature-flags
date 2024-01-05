@@ -9,19 +9,20 @@ import {
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { RequestChangeComponent } from '../../component/request-change/request-change.component';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 @Component({
   selector: 'app-requests',
   standalone: true,
-  imports: [MatTabsModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './requests.component.html',
   styleUrl: './requests.component.scss'
 })
 export class RequestsComponent {
   animal: string= '';
   name: string='';
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status'];
+  dataSource = new MatTableDataSource(COLUMN_DATA);
+  columnSize= COLUMN_DATA.length;
+  displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status','RequestedBy','RequestedTime'];
   constructor(public dialog: MatDialog) {}
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -29,7 +30,8 @@ export class RequestsComponent {
   }
   RequestChangeDialog(): void {
     const dialogRef = this.dialog.open(RequestChangeComponent, {
-      data: {name: this.name, animal: this.animal},
+      data: {name: this.name, animal: this.animal},height: '400px',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -39,13 +41,14 @@ export class RequestsComponent {
   }
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', Status: 'Pending'},
-  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', Status: 'Approved'},
-  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', Status: 'Declined'},
+const COLUMN_DATA: ColumnData[] = [
+  {position: 1, Name: 'Feature 1', Changes: 'Company 1 -> None', Status: 'Pending', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885'},
+  {position: 2, Name: 'Feature 2', Changes: 'Org A -> 1', Status: 'Approved', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885'},
+  {position: 3, Name: 'Feature 3', Changes: 'User C -> 1', Status: 'Declined', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885'},
+  {position: 3, Name: 'Feature 4', Changes: 'User A -> 1', Status: 'Approved', RequestedBy: 'tduan', RequestedTime: '2018-09-06 12:42:53.885'},
 ];
 
-export interface PeriodicElement {
+export interface ColumnData {
   Name: string;
   position: number;
   Changes: string;

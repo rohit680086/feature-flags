@@ -15,7 +15,11 @@
         <button mat-button class="filter_btn">Sort By <strong></strong></button>
       </div>
     <div class="button-sec">
-      <button mat-button class="filter_btn">Pagination <strong></strong></button>
+      <mat-paginator [length]="columnSize"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
     </div>
   </div>
 </div>
@@ -38,18 +42,36 @@
           <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
         </ng-container>
       
-        <!-- Weight Column -->
+        <!-- Changes Column -->
         <ng-container matColumnDef="Changes">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Changes </th>
           <td mat-cell *matCellDef="let element"> {{element.Changes}} </td>
         </ng-container>
       
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="Status">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-          <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+        <!-- RequestedBy Column -->
+        <ng-container matColumnDef="RequestedBy">
+          <th mat-header-cell *matHeaderCellDef  mat-sort-header> RequestedBy </th>
+          <td mat-cell *matCellDef="let element"> {{element.RequestedBy}} </td>
         </ng-container>
-      
+
+       <!-- RequestedTime Column -->
+       <ng-container matColumnDef="RequestedTime">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> RequestedTime </th>
+        <td mat-cell *matCellDef="let element"> {{element.RequestedTime}} </td>
+      </ng-container>
+
+       <!-- LastUpdatedBy Column -->
+       <ng-container matColumnDef="LastUpdatedBy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> LastUpdatedBy </th>
+        <td mat-cell *matCellDef="let element"> {{element.LastUpdatedBy}} </td>
+      </ng-container>
+
+       <!-- LastUpdatedTime Column -->
+       <ng-container matColumnDef="LastUpdatedTime">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> LastUpdatedTime </th>
+        <td mat-cell *matCellDef="let element"> {{element.LastUpdatedTime}} </td>
+      </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       
