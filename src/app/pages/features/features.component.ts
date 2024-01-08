@@ -20,6 +20,7 @@ import { FeatureFlagRestService } from '../../service/feature-flag-rest.service'
   standalone: true,
   imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule, MatExpansionModule],
   templateUrl: './features.component.html',
+  providers: [FeatureFlagRestService],
   styleUrl: './features.component.scss'
 })
 export class FeaturesComponent implements OnInit {
@@ -29,11 +30,11 @@ export class FeaturesComponent implements OnInit {
   resp: any;
   constructor(public dialog: MatDialog, private featureRestService :FeatureFlagRestService) {}
 
-  ngOnInit() {
-    this.featureRestService.getFeatureFlags().subscribe(
-    (response) => { this.resp = response; },
-    (error) => { console.log(error); });
-  }
+  // ngOnInit() {
+  //   this.featureRestService.getFeatureFlags().subscribe(
+  //   (response) => { this.resp = response; },
+  //   (error) => { console.log(error); });
+  // }
 
   newFeatureDialog(): void {
     const dialogRef = this.dialog.open(NewFeatureFlagComponent, {
