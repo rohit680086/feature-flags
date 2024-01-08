@@ -1,6 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -9,11 +7,16 @@ import {
 } from '@angular/material/dialog';
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
-import { MatSort, MatSortModule } from '@angular/material/sort';
+
+import {LiveAnnouncer} from '@angular/cdk/a11y';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+
 @Component({
   selector: 'app-audit',
   standalone: true,
-  imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule,MatSortModule],
+  imports: [MatTabsModule,MatSortModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './audit.component.html',
   styleUrl: './audit.component.scss'
 })
@@ -21,16 +24,25 @@ export class AuditComponent {
   displayedColumns: string[] = ['position', 'Name', 'Changes', 'RequestedBy','RequestedTime','LastUpdatedBy','LastUpdatedTime'];
   dataSource = new MatTableDataSource(COLUMN_DATA);
   columnSize= COLUMN_DATA.length;
-  constructor() {}
+  @ViewChild(MatSort) sort: MatSort= new MatSort;
+  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+  announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
   }
 }
 

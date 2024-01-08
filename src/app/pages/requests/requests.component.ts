@@ -1,6 +1,4 @@
-import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {
@@ -10,10 +8,16 @@ import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { RequestChangeComponent } from '../../component/request-change/request-change.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+
+import {LiveAnnouncer} from '@angular/cdk/a11y';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+
 @Component({
   selector: 'app-requests',
   standalone: true,
-  imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatSortModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
   templateUrl: './requests.component.html',
   styleUrl: './requests.component.scss'
 })
@@ -22,8 +26,14 @@ export class RequestsComponent {
   name: string='';
   dataSource = new MatTableDataSource(COLUMN_DATA);
   columnSize= COLUMN_DATA.length;
+  @ViewChild(MatSort) sort: MatSort= new MatSort;
   displayedColumns: string[] = ['position', 'Name', 'Changes', 'Status','RequestedBy','RequestedTime'];
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private _liveAnnouncer: LiveAnnouncer) {}
+
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -39,6 +49,18 @@ export class RequestsComponent {
       this.animal = result;
     });
   }
+  announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
+  }
+
 }
 
 const COLUMN_DATA: ColumnData[] = [
