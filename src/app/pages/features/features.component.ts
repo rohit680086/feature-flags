@@ -14,6 +14,7 @@ import { StatusCheckerComponent } from '../../component/status-checker/status-ch
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
 
+import { FeatureFlagRestService } from '../../service/feature-flag-rest.service';
 @Component({
   selector: 'app-features',
   standalone: true,
@@ -25,7 +26,15 @@ export class FeaturesComponent {
   animal: string= '';
   name: string='';
   title = 'pure_feature_flag';
-  constructor(public dialog: MatDialog) {}
+  resp: any;
+  constructor(public dialog: MatDialog, private featureRestService :FeatureFlagRestService) {}
+
+  ngOnInit() {
+    this.featureRestService.getFeatureFlags().subscribe(
+    (response) => { this.resp = response; },
+    (error) => { console.log(error); });
+  }
+
   newFeatureDialog(): void {
     const dialogRef = this.dialog.open(NewFeatureFlagComponent, {
       data: {name: this.name, animal: this.animal},height: '400px',
