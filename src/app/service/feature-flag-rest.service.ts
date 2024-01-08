@@ -11,4 +11,5 @@ export class FeatureFlagRestService {
   getFeatureFlags(){
     return this.httpClient.get('');
   }
+  
 }
