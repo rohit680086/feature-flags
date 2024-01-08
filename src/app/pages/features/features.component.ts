@@ -30,11 +30,11 @@ export class FeaturesComponent {
   resp: any;
   constructor(public dialog: MatDialog, private featureRestService :FeatureFlagRestService) {}
 
-  // ngOnInit() {
-  //   this.featureRestService.getFeatureFlags().subscribe(
-  //   (response) => { this.resp = response; },
-  //   (error) => { console.log(error); });
-  // }
+  ngOnInit() {
+    this.featureRestService.getFeatureFlags().subscribe(
+    (response) => { this.resp = response; },
+    (error) => { console.log(error); });
+  }
 
   newFeatureDialog(): void {
     const dialogRef = this.dialog.open(NewFeatureFlagComponent, {
