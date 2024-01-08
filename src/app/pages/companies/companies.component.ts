@@ -11,10 +11,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { RequestChangeComponent } from '../../component/request-change/request-change.component';
 import { StatusCheckerComponent } from '../../component/status-checker/status-checker.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatExpansionModule} from '@angular/material/expansion';
 @Component({
   selector: 'app-companies',
   standalone: true,
-  imports: [MatTabsModule,MatFormFieldModule, MatPaginatorModule,MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatFormFieldModule, MatPaginatorModule,MatInputModule, MatTableModule,FormsModule, MatButtonModule, MatExpansionModule],
   templateUrl: './companies.component.html',
   styleUrl: './companies.component.scss'
 })
@@ -44,4 +45,5 @@ export class CompaniesComponent {
       this.animal = result;
     });
   }
+  panelOpenState = true;
 }

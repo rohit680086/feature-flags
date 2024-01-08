@@ -12,10 +12,12 @@ import { NewFeatureFlagComponent } from '../../component/new-feature-flag/new-fe
 import { RequestChangeComponent } from '../../component/request-change/request-change.component';
 import { StatusCheckerComponent } from '../../component/status-checker/status-checker.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule],
+  imports: [MatTabsModule,MatPaginatorModule,MatFormFieldModule, MatInputModule, MatTableModule,FormsModule, MatButtonModule, MatExpansionModule],
   templateUrl: './features.component.html',
   styleUrl: './features.component.scss'
 })
@@ -59,4 +61,5 @@ export class FeaturesComponent {
       this.animal = result;
     });
   }
+  panelOpenState = false;
 }

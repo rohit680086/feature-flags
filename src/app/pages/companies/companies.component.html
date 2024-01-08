@@ -27,60 +27,78 @@
   </div>
 </div>
   <div class="container-fluid">
-    <div class="row my-4">
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h3 class="card-title">Feature1</h3>
-            <div class="row my-4">
-              <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title">Users</h3>
-                    <p class="card-text">User 1</p>
-                    <p class="card-text">User 2</p>   
+    <div class="expansion-sec">
+      <mat-accordion>    
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h4>Company 1</h4>
+            </mat-panel-title>        
+          </mat-expansion-panel-header>
+          <div class="row my-4">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">Feature1</h3>
+                  <div class="row my-4">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <h3 class="card-title">Users</h3>
+                          <p class="card-text">User 1</p>
+                          <p class="card-text">User 2</p>   
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <h3 class="card-title">Orgs</h3>
+                          <p class="card-text">Org 1</p>
+                          <p class="card-text">Org 2</p>      
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title">Orgs</h3>
-                    <p class="card-text">Org 1</p>
-                    <p class="card-text">Org 2</p>      
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title">Feature2</h3>
+                  <div class="row my-4">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <h3 class="card-title">Users</h3>
+                          <p class="card-text">User 1</p>
+                          <p class="card-text">User 2</p>   
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <h3 class="card-title">Orgs</h3>
+                          <p class="card-text">Org 1</p>
+                          <p class="card-text">Org 2</p>      
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h3 class="card-title">Feature2</h3>
-            <div class="row my-4">
-              <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title">Users</h3>
-                    <p class="card-text">User 1</p>
-                    <p class="card-text">User 2</p>   
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h3 class="card-title">Orgs</h3>
-                    <p class="card-text">Org 1</p>
-                    <p class="card-text">Org 2</p>      
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      
     </div>
   </div>
+
+
+
+
+  
