@@ -1,4 +1,4 @@
-import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, Inject, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
@@ -22,7 +22,7 @@ import { FeatureFlagRestService } from '../../service/feature-flag-rest.service'
   templateUrl: './features.component.html',
   styleUrl: './features.component.scss'
 })
-export class FeaturesComponent {
+export class FeaturesComponent implements OnInit {
   animal: string= '';
   name: string='';
   title = 'pure_feature_flag';
@@ -70,5 +70,5 @@ export class FeaturesComponent {
       this.animal = result;
     });
   }
-  panelOpenState = false;
+  panelOpenState = true;
 }

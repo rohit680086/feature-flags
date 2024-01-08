@@ -1,4 +1,4 @@
-import { Component,Inject,NgModule  } from '@angular/core';
+import { Component,Inject } from '@angular/core';
 import {
   MatDialog,
   MAT_DIALOG_DATA,
@@ -24,7 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose,
+    MatDialogClose
   ],
   templateUrl: './request-change.component.html',
   styleUrl: './request-change.component.scss'

@@ -1,13 +1,11 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
-import { BrowserModule } from '@angular/platform-browser';
-
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatTabsModule,RouterModule ],
+  imports: [CommonModule, RouterOutlet, MatTabsModule,RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -38,4 +36,3 @@ ngOnInit(): void {
   });
 }
 }
-
