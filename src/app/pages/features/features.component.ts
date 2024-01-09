@@ -23,7 +23,7 @@ import { FeatureFlagRestService } from '../../service/feature-flag-rest.service'
   providers: [FeatureFlagRestService],
   styleUrl: './features.component.scss'
 })
-export class FeaturesComponent implements OnInit {
+export class FeaturesComponent {
   animal: string= '';
   name: string='';
   title = 'pure_feature_flag';
